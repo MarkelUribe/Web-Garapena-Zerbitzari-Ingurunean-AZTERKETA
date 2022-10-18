@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alokatu</title>
+</head>
+<body>
+    <a href="../">Atzera</a>
+    <h1>kotxe bat alokatu</h1>
+
+    <form action="/kotxeak/alokatu/todb/" method="post">
+        {% csrf_token %}
+        Kotxea:<br>
+        <select name="kotxea">
+            {% for i in kotxeak %}
+            <option value="{{i.id}}"">{{i.izena}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        Pertsona:<br>
+        <select name="pertsona">
+            {% for i in pertsonak %}
+            <option value="{{i.id}}"">{{i.izena}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        alokatuData:<br>
+        <input type="date" name="alokatuData">
+        <br><br>
+        amaieraData:<br>
+        <input type="date" name="aamaieraData">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

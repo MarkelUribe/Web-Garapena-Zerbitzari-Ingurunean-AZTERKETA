@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kotxeak kudeatu</title>
+    <style>
+        .kutxak{
+            display: flex;
+        }
+        .kutxa{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #000;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Atzera</a>
+    <h1>kotxeak</h1>
+
+<div class="kutxak">
+{% for x in kotxeak %}
+<div class="kutxa">
+    <div>id = {{ x.id }}</div>
+    <div>izena = {{ x.izena }}</div>
+    <div>prezioa = {{ x.prezioa }}</div>
+
+    {% for j in alokairuak %}
+        {% if j.kotxea_id == x.id %}
+            <div>alokatuData = {{ j.alokatuData }}</div>
+            <div>amaieraData = {{ j.aamaieraData }}</div>
+            {% for i in pertsonak %}
+            {% if i.id == j.alokatzailea_id %}
+                <div>alokatzailea = {{ i.izena }}</div>
+            {% endif %} 
+            {% endfor %}
+            <a href="alokatu/amaitu/{{ j.id }}">Alokairua amaitu</a>
+        {% endif %} 
+    {% endfor %}
+    
+    <a href="delete/{{ x.id }}">Ezabatu</a>
+</div>
+{% endfor %}
+</div>
+<a href="add/">kotxe bat gehitu</a>
+<a href="alokatu/"><h5>KOTXE BAT ALOKATU</h5></a>
+</body>
+</html>
